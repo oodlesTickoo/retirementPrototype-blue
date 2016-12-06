@@ -19,6 +19,8 @@ app.controller("TTRController", ['$scope', '$timeout', 'AgeCalculator', 'ChartSe
         postalCode : 1234
     };
 
+    $scope.resultPerc = {};
+
     var d = document.getElementsByClassName('title-div');
 
     $scope.chartOneOpen = true;
@@ -2746,6 +2748,15 @@ app.controller("TTRController", ['$scope', '$timeout', 'AgeCalculator', 'ChartSe
 
             // console.log(assetCalculationObj);
 
+                $scope.resultPerc.perc=0;
+                $scope.resultPerc.diff=0;
+                $scope.resultPerc.target=0;
+                $scope.resultPerc.achieved=0;
+
+                console.log("yoyo",object1);
+                console.log("yoyo",$scope.retirementAge);
+                console.log("yoyo",$scope.age);
+
 
 
 
@@ -2759,6 +2770,45 @@ app.controller("TTRController", ['$scope', '$timeout', 'AgeCalculator', 'ChartSe
                 ChartServiceHc.createChart(totalSuperBalanceArray.slice(0, 5 + Math.ceil(leMember1)));
                 AreaChartService.createChart(member1APArray.slice(0, 5 + Math.ceil(leMember1)), [], member1PensionArray.slice(0, 5 + Math.ceil(leMember1)), [], leMember1, leMember2, false, targetIncome);
 
+
+                for(i=Number($scope.retirementAge)-$scope.age; i<leMember1;i++){
+                    $scope.resultPerc.achieved=$scope.resultPerc.achieved+member1APArray[i]+member1PensionArray[i];
+                }
+                $scope.resultPerc.achieved=$scope.resultPerc.achieved.toFixed(0);
+
+                $scope.resultPerc.target= Number($scope.target.replaceAll('$', '').replaceAll(',', ''))*((leMember1+$scope.age)-Number($scope.retirementAge));
+
+
+                if($scope.resultPerc.achieved>$scope.resultPerc.target){                    
+                    $scope.resultPerc.diff=$scope.resultPerc.achieved-$scope.resultPerc.target;
+                    $scope.resultPerc.perc=100;
+                    $scope.surplusOption=true;
+                }else{
+                     $scope.resultPerc.diff=$scope.resultPerc.target-$scope.resultPerc.achieved;
+                     $scope.resultPerc.perc=100-(($scope.resultPerc.diff/$scope.resultPerc.target)*100);
+                     $scope.resultPerc.perc=$scope.resultPerc.perc.toFixed(0);
+                     $scope.surplusOption=false;
+                }
+
+                $scope.mediumOption= $scope.resultPerc.perc>75?true:false;
+                $timeout(0);
+
+                var canvas = document.createElement("canvas");
+
+                canvg(canvas, $('#container').highcharts().getSVG());
+
+                var imgAA = canvas.toDataURL("image/png");
+
+                document.getElementById("containerImage").src = imgAA;
+
+                var canvas = document.createElement("canvas");
+
+                canvg(canvas, $('#containerA').highcharts().getSVG());
+
+                var imgBB = canvas.toDataURL("image/png");
+
+                document.getElementById("containerImageA").src = imgBB;
+                document.getElementById("containerImageB").src = imgBB;
             } else {
                 while (member1APArray.length <= Math.max(Math.ceil(leMember1), Math.ceil(leMember2))) {
                     member1APArray.push(0);
@@ -2775,6 +2825,44 @@ app.controller("TTRController", ['$scope', '$timeout', 'AgeCalculator', 'ChartSe
                 ChartServiceHc.createChart(totalSuperBalanceArray.slice(0, 5 + Math.max(Math.ceil(leMember1), Math.ceil(leMember2))));
                 AreaChartService.createChart(member1APArray.slice(0, 5 + Math.max(Math.ceil(leMember1), Math.ceil(leMember2))), member2APArray.slice(0, 5 + Math.max(Math.ceil(leMember1), Math.ceil(leMember2))), member1PensionArray.slice(0, 5 + Math.max(Math.ceil(leMember1), Math.ceil(leMember2))), member2PensionArray.slice(0, 5 + Math.max(Math.ceil(leMember1), Math.ceil(leMember2))), leMember1, leMember2, true, targetIncome);
 
+                for (i = Number($scope.retirementAge) - $scope.age; i < leMember1; i++) {
+                    $scope.resultPerc.achieved = $scope.resultPerc.achieved + member1APArray[i] + member1PensionArray[i] + member2APArray[i] + member2PensionArray[i]
+                }
+                $scope.resultPerc.achieved = $scope.resultPerc.achieved.toFixed(0);
+
+                $scope.resultPerc.target = Number($scope.target.replaceAll('$', '').replaceAll(',', '')) * ((leMember1 + $scope.age) - Number($scope.retirementAge));
+
+
+                if ($scope.resultPerc.achieved > $scope.resultPerc.target) {
+                    $scope.resultPerc.diff = $scope.resultPerc.achieved - $scope.resultPerc.target;
+                    $scope.resultPerc.perc = 100;
+                    $scope.surplusOption = true;
+                } else {
+                    $scope.resultPerc.diff = $scope.resultPerc.target - $scope.resultPerc.achieved;
+                    $scope.resultPerc.perc = 100 - (($scope.resultPerc.diff / $scope.resultPerc.target) * 100);
+                    $scope.resultPerc.perc = $scope.resultPerc.perc.toFixed(0);
+                    $scope.surplusOption = false;
+                }
+
+                $scope.mediumOption = $scope.resultPerc.perc > 75 ? true : false;
+                $timeout(0);
+
+                var canvas = document.createElement("canvas");
+
+                canvg(canvas, $('#container').highcharts().getSVG());
+
+                var imgAA = canvas.toDataURL("image/png");
+
+                document.getElementById("containerImage").src = imgAA;
+
+                var canvas = document.createElement("canvas");
+
+                canvg(canvas, $('#containerA').highcharts().getSVG());
+
+                var imgBB = canvas.toDataURL("image/png");
+
+                document.getElementById("containerImageA").src = imgBB;
+                document.getElementById("containerImageB").src = imgBB;
             }
             // console.log("calculated");
         } else {
