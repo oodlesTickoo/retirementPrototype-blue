@@ -91,14 +91,13 @@ body {
 }
 
 .general-details .icon-container i,
-.general-details-results .icon-container i{
+.general-details-results .icon-container i {
     background-color: #61746b;
 }
 
-.general-details{
+.general-details {
     background-color: #f3f5f4;
 }
-
 
 .general-details-results {
     background-color: #e1e8e4;
@@ -120,9 +119,9 @@ body {
     margin-top: 20px;
     font-family: AgendaMedium;
     background: #517f89;
-    background: -webkit-linear-gradient(0deg,#517f89 0%,#79a6b0 100%);
-    background: -webkit-linear-gradient(0deg,#517f89 0%,#79a6b0 100%);
-    background: linear-gradient(0deg,#517f89 0%,#79a6b0 100%);
+    background: -webkit-linear-gradient(0deg, #517f89 0%, #79a6b0 100%);
+    background: -webkit-linear-gradient(0deg, #517f89 0%, #79a6b0 100%);
+    background: linear-gradient(0deg, #517f89 0%, #79a6b0 100%);
 }
 
 .result-details .chart-button {
@@ -136,17 +135,17 @@ body {
     /*margin-right:10px;*/
     font-family: AgendaMedium;
     background: #e5ab00;
-    background: -webkit-linear-gradient(0deg,#72cce0 0%,#72cce0 100%);
-    background: -webkit-linear-gradient(0deg,#72cce0 0%,#72cce0 100%);
-    background: linear-gradient(0deg,#72cce0 0%,#72cce0 100%);
+    background: -webkit-linear-gradient(0deg, #72cce0 0%, #72cce0 100%);
+    background: -webkit-linear-gradient(0deg, #72cce0 0%, #72cce0 100%);
+    background: linear-gradient(0deg, #72cce0 0%, #72cce0 100%);
 }
 
 .page-content .ttrForm .submit-button:hover {
     text-decoration: none;
     background: #517f89;
-    background: -webkit-linear-gradient(0deg,#79a6b0 0%,#517f89 100%);
-    background: -webkit-linear-gradient(0deg,#79a6b0 0%,#517f89 100%);
-    background: linear-gradient(0deg,#79a6b0 0%,#517f89 100%);
+    background: -webkit-linear-gradient(0deg, #79a6b0 0%, #517f89 100%);
+    background: -webkit-linear-gradient(0deg, #79a6b0 0%, #517f89 100%);
+    background: linear-gradient(0deg, #79a6b0 0%, #517f89 100%);
 }
 
 .page-content .account-details input,
@@ -259,18 +258,20 @@ body {
         padding-left: 10px;
     }
     .small-buttons button {
-        background: #e5ab00 !important;
-        background: -webkit-linear-gradient(270deg, #e5ab00 0%, #f6ce39 100%) !important;
-        background: -webkit-linear-gradient(bottom, #e5ab00 0%, #f6ce39 100%) !important;
-        background: linear-gradient(0deg, #e5ab00 0%, #f6ce39 100%) !important;
+        background: #72cce0;
+        background: -webkit-linear-gradient(0deg, #72cce0 0%, #72cce0 100%);
+        background: -webkit-linear-gradient(0deg, #72cce0 0%, #72cce0 100%);
+        background: linear-gradient(0deg, #72cce0 0%, #72cce0 100%);
+        color: white;
     }
     .small-buttons {
         padding-left: 60px;
     }
     #bar-chart-m[disabled],
     #area-chart-m[disabled] {
-        background: #003946 !important;
-        opacity: 1;
+        background: #003946! important;
+    opacity: 1 !important;
+    color: white;
     }
     .result-content .value-container label {
         font-size: 18px;
@@ -305,8 +306,20 @@ body {
     .account-details>div:nth-child(1) p,
     .spouse-account-details>div:nth-child(1) p,
     .other-assets>div:nth-child(2)>h2,
-    .other-assets>div:nth-child(1) p {
+    .other-assets>div:nth-child(1) p,
+    .result-details>div>div:nth-child(1)>div:nth-child(2)>h2,
+    .result-details>div>div:nth-child(1)>div:nth-child(1) p,
+    .general-details-results>div:nth-child(2)>h2,
+    .general-details-results>div:nth-child(1) p,
+    .general-details>div:nth-child(2)>h2,
+    .general-details>div:nth-child(1) p {
         font-size: 15px;
+    }
+    .sub-para {
+        font-size: 15px;
+    }
+    .title-bar {
+        font-size: 26px;
     }
 }
 
@@ -621,9 +634,7 @@ body {
     text-decoration: underline;
 }
 
-
-#myModal2 li{
+#myModal2 li {
     padding-bottom: 10px;
     font-size: 15px;
-
 }
